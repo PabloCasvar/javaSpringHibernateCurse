@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Libros</h1>
+
+<form
+        action="#"
+        th:action="@{/books/register}"
+        method="post">
+
+    <label for="">Título:</label>
+    <input
+            type="text"
+            name="title"
+            placeholder="Título">
+    <label for="">Autor</label>
+    <input
+            type="text"
+            name="author"
+            placeholder="Autor">
+    <label for="">Editorial</label>
+    <input
+            type="text"
+            name="editorieditorialal"
+            placeholder="Editiorial">
+    <label for="">Páginas:</label>
+    <input
+            type="number"
+            name="pages"
+            placeholder="Páginas">
+    <label for="">Edición</label>
+    <textarea
+            type="text"
+            name="edition"
+            placeholder="Edición"></textarea>
+
+    <input type="submit" value="Registrar!">
+</form>
+
+</body>
+</html>

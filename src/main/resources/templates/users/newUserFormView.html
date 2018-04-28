@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Usuarios</h1>
+
+<form
+    action="#"
+    th:action="@{/users/register}"
+    method="post">
+
+    <label for="">Nombre:</label>
+    <input
+        type="text"
+        name="name"
+        placeholder="Nombre">
+    <label for="">Apellido Paterno:</label>
+    <input
+        type="text"
+        name="lastnameP"
+        placeholder="Apellido Paterno">
+    <label for="">Apellido Materno:</label>
+    <input
+        type="text"
+        name="lastnameM"
+        placeholder="Apellido Materno">
+    <label for="">Edad:</label>
+    <input
+        type="number"
+        name="age"
+        placeholder="Edad">
+    <label for="">Direcciòn:</label>
+    <textarea
+        type="text"
+        name="address"
+        placeholder="Dirección"></textarea>
+
+    <input type="submit" value="Registrar!">
+</form>
+
+</body>
+</html>
