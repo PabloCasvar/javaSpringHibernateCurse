@@ -14,32 +14,37 @@
 <form
         action="#"
         th:action="@{/books/register}"
+        th:object="${bookModel}"
         method="post">
 
+    <input
+            type="text"
+            th:field="*{id}"
+            hidden="true">
     <label for="">Título:</label>
     <input
             type="text"
-            name="title"
+            th:field="*{title}"
             placeholder="Título">
     <label for="">Autor</label>
     <input
             type="text"
-            name="author"
+            th:field="*{author}"
             placeholder="Autor">
     <label for="">Editorial</label>
     <input
             type="text"
-            name="editorieditorialal"
+            th:field="*{editorial}"
             placeholder="Editiorial">
     <label for="">Páginas:</label>
     <input
             type="number"
-            name="pages"
+            th:field="*{pages}"
             placeholder="Páginas">
     <label for="">Edición</label>
     <textarea
             type="text"
-            name="edition"
+            th:field="*{edition}"
             placeholder="Edición"></textarea>
 
     <input type="submit" value="Registrar!">

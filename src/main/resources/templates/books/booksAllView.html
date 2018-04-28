@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +10,48 @@
 </head>
 <body>
 <h1>Libros</h1>
-<label for="">id:</label><input type="text">
-<label for="">Tìtulo:</label><input type="text">
-<label for="">Autor:</label><input type="text">
-<label for="">Editorial:</label><input type="text">
-<label for="">Pàginas</label><input type="text">
-<label for="">Ediciòn</label><input type="text">
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Editorial</th>
+        <th>Páginas</th>
+        <th>Edición</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.editorial}"></td>
+        <td th:text="${book.pages}"></td>
+        <td th:text="${book.edition}"></td>
+        <td>
+            <a
+                href="#"
+                th:href="@{'/books/edit/' + ${book.id}}">
+                <button>Editar</button>
+            </a>
+        </td>
+        <td>
+            <a
+                href=""
+                th:href="@{'/books/delete/' + ${book.id}}">
+                <button>Eliminar</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a
+    href=""
+    th:href="@{'/books/new'}">
+    <button>Agregar</button>
+</a>
 </body>
 </html>

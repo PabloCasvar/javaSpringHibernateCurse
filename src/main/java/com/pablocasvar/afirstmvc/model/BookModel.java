@@ -14,6 +14,7 @@ public class BookModel {
 
     public BookModel() {
         super();
+        this.id = 0;
     }
 
     public BookModel(int id, String title, String author, String editorial, int pages, String edition) {
@@ -28,6 +29,7 @@ public class BookModel {
 
     public BookModel(String title, String author, String editorial, int pages, String edition) {
         super();
+        this.id = 0;
         this.title = title;
         this.author = author;
         this.editorial = editorial;
