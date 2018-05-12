@@ -1,5 +1,4 @@
 <h1>JAVA Spring con Hibernate. Notas del curso</h1>
-jmperezsatos/CIC-SPRING-HIBERNATE
 
 <h2>Thymeleaf template</h2>
 
