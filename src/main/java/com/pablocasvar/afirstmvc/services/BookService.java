@@ -1,9 +1,13 @@
 package com.pablocasvar.afirstmvc.services;
 
 import com.pablocasvar.afirstmvc.model.BookModel;
+import com.pablocasvar.afirstmvc.repositories.IBookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 /**
  * Created by Pablo on 28/04/2018.
@@ -11,59 +15,35 @@ import java.util.ArrayList;
 @Service
 public class BookService {
 
-    private ArrayList<BookModel> books = new ArrayList<>();
-    private int count;
+    @Autowired
+    private IBookRepository repository;
 
-    public BookService(){
+    public BookModel findById(Integer id){
 
-        this.books.add(new BookModel(3, "El fin de la lectura", "Neuman", "Final", 100, "Segunda"));
-        this.books.add(new BookModel(1, "El principito", "Francès", "Editorial A", 125, "Primera"));
-        this.books.add(new BookModel(2, "Fìsica Universitaria", "Halliday, Resnick, Krane", "Editorial B", 1100, "Cuarta"));
-
-        this.count = this.books.size();
-    }
-
-
-    public BookModel findById(int id){
-        BookModel found = null;
-        for (BookModel book : this.books){
-            if(book.getId() == id) {
-                found = book;
-                break;
-            }
+        Optional<BookModel> found = this.repository.findById(id);
+        try{
+            return found.get();
+        }catch(NoSuchElementException e){
+            System.out.println("No se encontró el elemento");
         }
-        return found;
+
+        return null;
     }
 
-    public ArrayList<BookModel> findAll(){
-        return this.books;
+    public List<BookModel> findAll(){
+        return this.repository.findAll();
     }
 
-    public boolean delete(int idToDelete){
-        BookModel found = this.findById(idToDelete);
-        if(found != null){
-            return this.books.remove(found);
-        }else {
-            return false;
-        }
+    public boolean delete(Integer idToDelete){
+        this.repository.deleteById(idToDelete);
+        return true;
     }
 
     public BookModel register(BookModel newBook){
-        newBook.setId(++count);
-        this.books.add(newBook);
-        return newBook;
+        return this.repository.save(newBook);
     }
 
     public BookModel edit(BookModel bookModel){
-        BookModel book = this.findById(bookModel.getId());
-
-        if(book != null){
-            book.setTitle(bookModel.getTitle());
-            book.setAuthor(bookModel.getAuthor());
-            book.setEdition(bookModel.getEdition());
-            book.setEditorial(bookModel.getEditorial());
-            book.setPages(bookModel.getPages());
-        }
-        return book;
+        return this.repository.save(bookModel);
     }
 }

@@ -17,6 +17,11 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @GetMapping("")
+    public String redirectToShowAll(){
+        return "redirect:/books/all";
+    }
+
     @GetMapping("/all")
     public ModelAndView booksAll(){
 
@@ -39,7 +44,7 @@ public class BookController {
     public String register(
             @ModelAttribute(name = "bookModel") BookModel bookModel){
 
-        if(bookModel.getId() == 0){
+        if(bookModel.getId() == null || bookModel.getId() == 0){
             this.bookService.register(bookModel);
         } else {
             this.bookService.edit(bookModel);

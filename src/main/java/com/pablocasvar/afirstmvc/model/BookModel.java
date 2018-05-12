@@ -1,15 +1,31 @@
 package com.pablocasvar.afirstmvc.model;
 
+import javax.persistence.*;
+
 /**
  * Created by Pablo on 21/04/2018.
  */
+@Entity
+@Table(name = "libros")
 public class BookModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
+    private Integer id;
 
-    private int     id;
+    @Column(name="titulo")
     private String  title;
+
+    @Column(name="autor")
     private String  author;
+
+    @Column(name="editorial")
     private String  editorial;
+
+    @Column(name="paginas")
     private int     pages;
+
+    @Column(name="edicion")
     private String  edition;
 
     public BookModel() {
@@ -17,7 +33,7 @@ public class BookModel {
         this.id = 0;
     }
 
-    public BookModel(int id, String title, String author, String editorial, int pages, String edition) {
+    public BookModel(Integer id, String title, String author, String editorial, int pages, String edition) {
         super();
         this.id = id;
         this.title = title;
@@ -37,7 +53,7 @@ public class BookModel {
         this.edition = edition;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
