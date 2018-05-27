@@ -1,23 +1,43 @@
 package com.pablocasvar.afirstmvc.model;
 
+import javax.persistence.*;
+import java.util.List;
+
 /**
  * Created by Pablo on 21/04/2018.
  */
-
+@Entity
+@Table(name="usuarios")
 public class UserModel {
 
-    private int     id;
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer     id;
+
+    @Column(name="nombre")
     private String  name;
+
+    @Column(name="apellido_paterno")
     private String  lastnameP;
+
+    @Column(name="apellido_materno")
     private String  lastnameM;
+
+    @Column(name="edad")
     private int     age;
+
+    @Column(name="direcccion")
     private String  address;
+
+    @OneToMany(mappedBy = "user")
+    private List<LoanModel> loans;
 
     public UserModel() {
         super();
     }
 
-    public UserModel(int id, String name, String lastnameP, String lastnameM, int age, String address) {
+    public UserModel(Integer id, String name, String lastnameP, String lastnameM, int age, String address) {
         super();
         this.id = id;
         this.name = name;
@@ -36,11 +56,11 @@ public class UserModel {
         this.address = address;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

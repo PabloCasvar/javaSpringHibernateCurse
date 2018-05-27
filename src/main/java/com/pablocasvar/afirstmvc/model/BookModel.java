@@ -1,6 +1,7 @@
 package com.pablocasvar.afirstmvc.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Pablo on 21/04/2018.
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "libros")
 public class BookModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer id;
 
@@ -28,12 +29,18 @@ public class BookModel {
     @Column(name="edicion")
     private String  edition;
 
+    @Column(name="existencia")
+    private Integer stock;
+
+    @OneToMany(mappedBy="book")
+    private List<LoanModel> loans;
+
     public BookModel() {
         super();
         this.id = 0;
     }
 
-    public BookModel(Integer id, String title, String author, String editorial, int pages, String edition) {
+    public BookModel(Integer id, String title, String author, String editorial, int pages, String edition, Integer stock) {
         super();
         this.id = id;
         this.title = title;
@@ -41,9 +48,10 @@ public class BookModel {
         this.editorial = editorial;
         this.pages = pages;
         this.edition = edition;
+        this.stock = stock;
     }
 
-    public BookModel(String title, String author, String editorial, int pages, String edition) {
+    public BookModel(String title, String author, String editorial, int pages, String edition, Integer stock) {
         super();
         this.id = 0;
         this.title = title;
@@ -51,6 +59,23 @@ public class BookModel {
         this.editorial = editorial;
         this.pages = pages;
         this.edition = edition;
+        this.stock = stock;
+    }
+
+    public Integer getStock(){
+        return this.stock;
+    }
+
+    public void setStock(Integer stock){
+        this.stock = stock;
+    }
+
+    public List<LoanModel> getLoans(){
+        return loans;
+    }
+
+    public void setLoans(List<LoanModel> loans){
+        this.loans = loans;
     }
 
     public Integer getId() {
@@ -110,6 +135,7 @@ public class BookModel {
                 ", editorial='" + editorial + '\'' +
                 ", pages=" + pages +
                 ", edition='" + edition + '\'' +
+                ", stock='" + stock + '\'' +
                 '}';
     }
 }

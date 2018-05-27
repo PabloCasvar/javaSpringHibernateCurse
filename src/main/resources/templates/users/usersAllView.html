@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Usuarios</title>
 </head>
 <body>
 <h1>Usuarios</h1>
@@ -19,6 +19,8 @@
             <th>Apellido Materno</th>
             <th>Edad</th>
             <th>Dirección</th>
+            <th>Edición</th>
+            <th>Eliminar</th>
         </tr>
     </thead>
     <tbody>
@@ -29,8 +31,29 @@
             <td th:text="${user.lastnameM}"></td>
             <td th:text="${user.age}"></td>
             <td th:text="${user.address}"></td>
+            <td>
+                <a
+                    href="#"
+                    th:href="@{'/users/edit/' + ${user.id}}">
+                    <button>Editar</button>
+                </a>
+            </td>
+            <td>
+                <a
+                    href="#"
+                    th:href="@{'/users/delete/' + ${user.id}}">
+                    <button>Eliminar</button>
+                </a>
+            </td>
         </tr>
     </tbody>
 </table>
+
+<br>
+<a
+    href="#"
+    th:href="@{'/users/new'}">
+    <button>Agregar</button>
+</a>
 </body>
 </html>
