@@ -1,23 +1,19 @@
-#JAVA Spring con Hibernate. Notas del curso
-jmperezsatos/CIC-SPRING-HIBERNATE
+<h1>JAVA Spring con Hibernate. Notas del curso</h1>
 
-##Thymeleaf template
+<h2>Thymeleaf template</h2>
 
-${} Acceso a variable en sesión
-*{} Referencia a un objeto contextual
-@{} Referencia a una ruta en mi sistema
+Sintaxis  | Función
+----------|--------
+${} | Acceso a variable en sesión
+*{} | Referencia a un objeto contextual
+@{} | Referencia a una ruta en mi sistema
 
-##Spring MVC
+<h2>Spring MVC</h2>
 
-###Controller
-####Controlador
-Responsabliidad: Recibe información y contesta
+<h3>Controller</h3>
 
-####Servicio
-Responsabilidad: Procesa la información 
-
-####Repositorio
-Responsabilidad: Se encarga de las consultas a la base de datos
-
-###Model
-Define las entidades que utilizan en el proyecto
+Anotación | Responsabilidad
+----------|----------------
+Controller| Recibe información y contesta
+Service | Procesa la información
+Repository |  Define las entidades en el proyecto
