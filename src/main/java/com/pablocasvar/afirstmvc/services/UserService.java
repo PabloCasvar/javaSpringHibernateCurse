@@ -47,4 +47,17 @@ public class UserService {
         this.userRepository.deleteById(idToDelete);
         return true;
     }
+
+    public List<UserModel> search(
+        String name,
+        String lastnameP,
+        String lastnameM
+    ){
+        return this.userRepository.findByNameContainingOrLastnamePContainingOrLastnameMContaining(
+            name.length() > 0 ? name : " ",
+            lastnameP.length() > 0 ? lastnameP : " ",
+            lastnameM.length() > 0 ? lastnameM : " "
+        );
+    }
+
 }

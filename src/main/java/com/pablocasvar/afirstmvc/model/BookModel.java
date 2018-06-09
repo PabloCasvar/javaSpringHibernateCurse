@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "libros")
 public class BookModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private Integer id;
 

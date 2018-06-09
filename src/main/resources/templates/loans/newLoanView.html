@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form
+        action="#"
+        th:action="@{/loan/register}"
+        method="post">
+        <label for="">Fecha de inicio: </label>
+        <input
+            type="date"
+            name="startDate"
+            placeholder="Fecha de inicio">
+        <br>
+        <label for="">Fecha de Fin:</label>
+        <input type="date"
+            name="endDate"
+            placeholder="Fecha fin">
+        <br>
+        <label for="">Usuario:</label>
+        <select name="userId" id="userId">
+            <option
+                value="0"
+                th:text="----Selecione----"></option>
+            <option
+                th:each="user : ${usuarios}"
+                th:value="${user.id}"
+                th:text="${user.fullName()}"></option>
+        </select>
+        <br>
+        <label for="">Libro:</label>
+        <select name="bookId" id="bookId">
+            <option
+                value="0"
+                th:text="----Selecccione----"></option>
+            <option
+                th:each="book : ${libros}"
+                th:value="${book.id}"
+                th:text="${book.title}">
+            </option>
+        </select>
+
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

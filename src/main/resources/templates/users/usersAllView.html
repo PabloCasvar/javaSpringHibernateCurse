@@ -10,6 +10,15 @@
 </head>
 <body>
 <h1>Usuarios</h1>
+
+<form action="#" th:action="@{/users/search}">
+    <input type="text" name="name" placeholder="Nombre:">
+    <input type="text" name="lastnameP" placeholder="Apellido paterno:">
+    <input type="text" name="lastnameM" placeholder="Apellido materno:">
+
+    <button type="submit"> Buscar! </button>
+</form>
+
 <table>
     <thead>
         <tr>

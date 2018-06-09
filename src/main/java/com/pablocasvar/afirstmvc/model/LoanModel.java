@@ -1,7 +1,9 @@
 package com.pablocasvar.afirstmvc.model;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Pablo on 27/05/2018.
@@ -23,11 +25,11 @@ public class LoanModel {
     private Date endDate;
 
     @ManyToOne
-    @JoinColumn(name="book_id", referencedColumnName = "id")
+    @JoinColumn(name="libros_id", referencedColumnName = "id")
     private BookModel book;
 
     @ManyToOne
-    @JoinColumn(name="user_id", referencedColumnName = "id")
+    @JoinColumn(name="usuarios_id", referencedColumnName = "id")
     private UserModel user;
 
     public LoanModel(){
@@ -47,6 +49,13 @@ public class LoanModel {
         this.endDate = endDate;
         this.book = book;
         this.user = user;
+    }
+
+    public String formattedStartDate(){
+        Locale locale = new Locale("es", "MX");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy", locale);
+
+        return sdf.format(startDate);
     }
 
     public Integer getId() {

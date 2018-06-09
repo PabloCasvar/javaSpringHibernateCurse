@@ -12,7 +12,7 @@ public class UserModel {
 
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer     id;
 
     @Column(name="nombre")
@@ -32,6 +32,21 @@ public class UserModel {
 
     @OneToMany(mappedBy = "user")
     private List<LoanModel> loans;
+
+    public List<LoanModel> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(List<LoanModel> loans) {
+        this.loans = loans;
+    }
+
+    public String fullName(){
+        return String.format("%s %s %s",
+                    name,
+                    lastnameP,
+                    lastnameM);
+    }
 
     public UserModel() {
         super();

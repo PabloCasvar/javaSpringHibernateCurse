@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 
 /**
  * Created by Pablo on 21/04/2018.
@@ -68,4 +70,18 @@ public class UserController {
         return "redirect:/users/all";
     }
 
+    @GetMapping("/search")
+    public ModelAndView search(
+        @RequestParam(name = "name", required = false) String name,
+        @RequestParam(name = "lastnameP", required = false) String lastnameP,
+        @RequestParam(name = "lastnameM", required = false) String lastnameM
+    ){
+        List<UserModel> searchResult = this.userService.search(name, lastnameP, lastnameM);
+
+        ModelAndView mav = new ModelAndView("users/usersAllView");
+
+        mav.addObject("users", searchResult);
+
+        return mav;
+    }
 }
