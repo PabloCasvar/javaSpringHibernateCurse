@@ -27,13 +27,13 @@
         <td th:text="${loan.user.fullName()}"></td>
         <td th:text="${loan.formattedStartDate()}"></td>
         <td th:text="${#dates.format(loan.endDate, 'dd-MMMM-yyyy')}"></td>
-        <!--td>
+        <td>
             <a
                 href="#"
                 th:href="@{'/loan/edit/' + ${loan.id}}">
                 <button>Editar</button>
             </a>
-        </td-->
+        </td>
         <td>
             <a
                 href="#"

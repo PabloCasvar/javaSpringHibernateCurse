@@ -10,20 +10,22 @@
     <form
         action="#"
         th:action="@{/loan/register}"
+        th:object="${loanModel}"
         method="post">
         <label for="">Fecha de inicio: </label>
         <input
             type="date"
-            name="startDate"
-            placeholder="Fecha de inicio">
+            th:field="*{startDate}"
+            placeholder="Fecha de inicio"
+            >
         <br>
         <label for="">Fecha de Fin:</label>
         <input type="date"
-            name="endDate"
+            th:field="*{endDate}"
             placeholder="Fecha fin">
-
+        <br>
         <label for="">Usuario:</label>
-        <select name="userId" id="userId">
+        <select name="userId" id="userId" th:value="*{user.id}">
             <option
                 value="0"
                 th:text="----Selecione----"></option>
@@ -32,9 +34,9 @@
                 th:value="${user.id}"
                 th:text="${user.fullName()}"></option>
         </select>
-
+        <br>
         <label for="">Libro:</label>
-        <select name="bookId" id="bookId">
+        <select name="bookId" id="bookId" th:value="*{book.id}">
             <option
                 value="0"
                 th:text="----Selecccione----"></option>

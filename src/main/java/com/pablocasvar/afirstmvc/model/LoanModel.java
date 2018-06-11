@@ -1,5 +1,7 @@
 package com.pablocasvar.afirstmvc.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,9 +20,11 @@ public class LoanModel {
     @Column(name="identificador")
     private Integer id;
 
+    @DateTimeFormat(pattern = "yyy-MM-dd")
     @Column(name="fecha_asignacion")
     private Date startDate;
 
+    @DateTimeFormat(pattern = "yyy-MM-dd")
     @Column(name="fecha_regreso")
     private Date endDate;
 

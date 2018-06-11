@@ -99,11 +99,25 @@ public class LoanController {
     public ModelAndView editLoan(
             @PathVariable(name = "id") Integer id
     ){
+
+        LoanModel loan = loanService.findById(id);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        String startDateStr = format.format(loan.getStartDate());
+
         ModelAndView mav = new ModelAndView(
-                "loans/newLoanView",
+                "loans/editLoanView",
                 "loanModel",
                 loanService.findById(id)
         );
+
+        mav.addObject("startDateStr", startDateStr);
+
+        List<UserModel> users = this.userService.findAll();
+        List<BookModel> books = this.bookService.findAll();
+
+        mav.addObject("usuarios", users);
+        mav.addObject("libros", books);
 
         return mav;
     }
